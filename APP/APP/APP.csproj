@@ -1,0 +1,151 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Plugin.LocalNotification" Version="10.0.3" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Modules\Channel\Models\" />
+    <Folder Include="Modules\Channel\Views\" />
+    <Folder Include="Modules\Channel\ViewModels\" />
+    <Folder Include="Modules\Pqrs\Views\" />
+    <Folder Include="Modules\Pqrs\ViewModels\" />
+    <Folder Include="Modules\Region\Views\" />
+    <Folder Include="Modules\Region\ViewModels\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Modules\Establecimientos\Views\EstablishmentsPage.xaml.cs">
+      <DependentUpon>EstablishmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Establecimientos\Views\EstablishmentsDetailPage.xaml.cs">
+      <DependentUpon>EstablishmentsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Event\Views\EventsDetailPage.xaml.cs">
+      <DependentUpon>EventsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Event\Views\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Faq\Views\FaqsDetailPage.xaml.cs">
+      <DependentUpon>FaqsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Faq\Views\FaqsPage.xaml.cs">
+      <DependentUpon>FaqsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Master\Views\MasterSesionPage.xaml.cs">
+      <DependentUpon>MasterSesionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Norm\Views\NormsDetailPage.xaml.cs">
+      <DependentUpon>NormsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Norm\Views\NormsPage.xaml.cs">
+      <DependentUpon>NormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Notifications\Views\NotificationsDetailPage.xaml.cs">
+      <DependentUpon>NotificationsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Notifications\Views\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Persona\Views\RememberAccountPage.xaml.cs">
+      <DependentUpon>RememberAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Persona\Views\NewAccountPage.xaml.cs">
+      <DependentUpon>NewAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Requirement\Views\RequirementsDetailPage.xaml.cs">
+      <DependentUpon>RequirementsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Requirement\Views\RequirementsPage.xaml.cs">
+      <DependentUpon>RequirementsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Modules\Establecimientos\Views\EstablishmentsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Establecimientos\Views\EstablishmentsDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Event\Views\EventsDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Event\Views\EventsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Faq\Views\FaqsDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Faq\Views\FaqsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterDashboardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterSesionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterInformationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterLoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterMenuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterTabbedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Master\Views\MasterWebPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Norm\Views\NormsDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Norm\Views\NormsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Notifications\Views\NotificationsDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Notifications\Views\NotificationsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Persona\Views\RememberAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Persona\Views\NewAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Requirement\Views\RequirementsDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Requirement\Views\RequirementsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

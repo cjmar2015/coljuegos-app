@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APP.Views.EventsPage"
+        IconImageSource="ic_file"
+        BackgroundColor="WhiteSmoke"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}"
+        Title="Eventos">
+    <ContentPage.ToolbarItems Name="ToolBarItems">
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            BindingContext="{Binding Events}"
+            Padding="10"
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand">
+                <Grid
+                    Padding="0"
+                    RowSpacing="0"
+                    ColumnSpacing="0"
+                    Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        CornerRadius="5"
+                        BackgroundColor="White"
+                        Opacity="0.9"/>
+                    <Entry
+                        Grid.Row="0"
+                        Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            HeightRequest="40"
+                            Text="{Binding Filter, Mode=TwoWay}"
+                            TextColor="Black"
+                            Placeholder="Buscar"
+                            HorizontalTextAlignment="Start"
+                            HorizontalOptions="FillAndExpand">
+                        </Entry>
+                    <Button 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        ImageSource="ic_search"
+                        FontSize="Small"
+                        TextColor="#000"
+                        Margin="0"
+                        Padding="10"
+                        BackgroundColor="#FFC629"
+                        HorizontalOptions="End"
+                        CornerRadius="5"
+                        BorderWidth="1"
+                        Command="{Binding SearchCommand}"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0">
+                <!--<Label
+                        FontSize="Micro"
+                        Text="{Binding Mensaje, Mode=TwoWay}"
+                        TextColor="Black"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Center" />-->
+                <ListView 
+                        BackgroundColor="Transparent"
+                        HasUnevenRows="true" 
+                        RefreshControlColor="#3F51B5"
+                        IsPullToRefreshEnabled="true"
+                        IsRefreshing="{Binding IsRunning, Mode=TwoWay}"
+                        ItemsSource="{Binding ObjEvents, Mode=TwoWay}"
+                        RefreshCommand="{Binding RefreshCommand, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    BackgroundColor="White"
+                                    CornerRadius="5"
+                                    Padding="0"
+                                    HasShadow="True"
+                                    Margin="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectEventsItemCommand}">
+                                        </TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <BoxView
+                                            Grid.Column="0"
+                                            BackgroundColor="#004478"/>
+                                        <Image 
+                                            Grid.Column="0"
+                                            WidthRequest="35"
+                                            HeightRequest="35"
+                                            HorizontalOptions="End" 
+                                            Source="ic_chevron_right">
+                                        </Image>
+                                        <StackLayout 
+                                            Padding="5"
+                                            Grid.Column="1"
+                                            VerticalOptions="FillAndExpand">
+                                            <!--<Label 
+                                                    FontSize="Micro" 
+                                                    Text="{Binding Path=}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                            </Label>-->
+                                            <Label 
+                                                    FontAttributes="Bold"
+                                                    FontSize="Small" 
+                                                    Text="{Binding title}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                            </Label>
+                                            <Label 
+                                                    FontSize="Micro" 
+                                                    Text="{Binding eventAt}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                            </Label>
+                                            <Label 
+                                                    FontSize="Micro" 
+                                                    Text="{Binding CONTENIDO_INTRO}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <!--<ActivityIndicator 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="WhiteSmoke"
+                    Opacity="0.7"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    IsVisible="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

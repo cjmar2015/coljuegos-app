@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.4" package="com.coljuegos.app" android:installLocation="internalOnly">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
+	<application android:label="APP.Android" android:theme="@style/MainTheme" android:usesCleartextTraffic="true" android:grantUriPermissions="true"></application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+</manifest>

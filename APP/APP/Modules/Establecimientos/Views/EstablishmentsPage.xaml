@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APP.Views.EstablishmentsPage"
+        IconImageSource="ic_file"
+        BackgroundColor="WhiteSmoke"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}"
+        Title="Establishment">
+    <ContentPage.ToolbarItems Name="ToolBarItems">
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            BindingContext="{Binding Establishments}"
+            Padding="10"
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                <StackLayout 
+                            Orientation="Vertical"
+                            HorizontalOptions="FillAndExpand">
+                    <!--<Label
+                            FontSize="Micro"
+                            Text="Departamento:"
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Start" />-->
+                    <Picker
+                            FontSize="Small"
+                            TextColor="Black"
+                            HorizontalTextAlignment="Start"
+                            SelectedIndex="1"
+                            Title="Departamento:"
+                            ItemsSource="{Binding ListDepartamento, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedDepartamento, Mode=TwoWay}"
+                            VerticalOptions="Start" 
+                            HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout 
+                            Orientation="Vertical"
+                            HorizontalOptions="FillAndExpand">
+                    <!--<Label
+                            FontSize="Micro"
+                            Text="Ciudad:"
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Start" />-->
+                    <Picker
+                            FontSize="Small"
+                            TextColor="Black"
+                            HorizontalTextAlignment="Start"
+                            SelectedIndex="0"
+                            Title="Ciudad:"
+                            ItemsSource="{Binding ListCiudad, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedCiudad, Mode=TwoWay}"
+                            VerticalOptions="Start" 
+                            HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0">
+                <ListView 
+                        BackgroundColor="Transparent"
+                        HasUnevenRows="true" 
+                        RefreshControlColor="#3F51B5"
+                        IsPullToRefreshEnabled="true"
+                        IsRefreshing="{Binding IsRunning, Mode=TwoWay}"
+                        ItemsSource="{Binding ObjEstablishments, Mode=TwoWay}"
+                        RefreshCommand="{Binding RefreshCommand, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    BackgroundColor="White"
+                                    CornerRadius="5"
+                                    Padding="0"
+                                    HasShadow="True"
+                                    Margin="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectEstablishmentsItemCommand}">
+                                        </TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <BoxView
+                                            Grid.Column="0"
+                                            BackgroundColor="#004478"/>
+                                        <Image 
+                                            Grid.Column="0"
+                                            WidthRequest="35"
+                                            HeightRequest="35"
+                                            HorizontalOptions="End" 
+                                            Source="ic_chevron_right">
+                                        </Image>
+                                        <StackLayout 
+                                            Padding="5"
+                                            Grid.Column="1"
+                                            VerticalOptions="FillAndExpand">
+                                            <!--<Label 
+                                                    FontSize="Micro" 
+                                                    Text="{Binding Path=}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                            </Label>-->
+                                            <Label 
+                                                    FontAttributes="Bold"
+                                                    FontSize="Small" 
+                                                    Text="{Binding name}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    VerticalTextAlignment="Center">
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <!--<ActivityIndicator 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="WhiteSmoke"
+                    Opacity="0.7"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    IsVisible="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

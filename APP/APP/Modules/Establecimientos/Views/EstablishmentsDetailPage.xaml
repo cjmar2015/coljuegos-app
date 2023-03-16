@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APP.Views.EstablishmentsDetailPage"
+        IconImageSource="ic_file"
+        BackgroundColor="WhiteSmoke"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}"
+        Title="Detalle">
+    <ContentPage.ToolbarItems Name="ToolBarItems">
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            BindingContext="{Binding EstablishmentsDetail}"
+            Padding="10"
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout 
+                Padding="10"
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand">
+                <StackLayout 
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <Label 
+                        FontSize="Small" 
+                        Text="Codigo contrato:"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Start">
+                    </Label>
+                    <Label 
+                        FontSize="Small" 
+                        Text="{Binding EstablishmentsItem.codContract, Mode=TwoWay}"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Start">
+                    </Label>
+                </StackLayout>
+                
+                <Label 
+                    FontSize="Small" 
+                    Text="{Binding EstablishmentsItem.name, Mode=TwoWay}"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+                <StackLayout 
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <Label 
+                        FontSize="Small" 
+                        Text="Dirección:"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Start">
+                    </Label>
+                    <Label 
+                    FontSize="Small" 
+                    Text="{Binding EstablishmentsItem.address, Mode=TwoWay}"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                    </Label>
+                </StackLayout>
+                
+                <Label 
+                    FontSize="Small" 
+                    Text="{Binding EstablishmentsItem.cityName, Mode=TwoWay}"
+                    TextType="Html"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+                <StackLayout 
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <Label 
+                        FontSize="Small" 
+                        Text="Nuc:"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Start">
+                    </Label>
+                    <Label 
+                    FontSize="Small" 
+                    Text="{Binding EstablishmentsItem.nuc, Mode=TwoWay}"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                    </Label>
+                </StackLayout>
+                <Label 
+                    FontSize="Small" 
+                    Text="{Binding EstablishmentsItem.opertor, Mode=TwoWay}"
+                    TextType="Html"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+            </StackLayout>
+            <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0">
+                <ListView 
+                    BackgroundColor="Transparent"
+                    HasUnevenRows="true" 
+                    IsPullToRefreshEnabled="true"
+                    IsRefreshing="{Binding IsRunning, Mode=TwoWay}"
+                    ItemsSource="{Binding Machines, Mode=TwoWay}"
+                    RefreshCommand="{Binding RefreshCommand, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    CornerRadius="5"
+                                    Padding="0"
+                                    HasShadow="True"
+                                    Margin="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectMachinesItemCommand}">
+                                        </TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <BoxView
+                                            Grid.Column="0"
+                                            BackgroundColor="#004478"/>
+                                        <Image 
+                                            Grid.Column="0"
+                                            WidthRequest="35"
+                                            HeightRequest="35"
+                                            HorizontalOptions="End" 
+                                            Source="ic_chevron_right">
+                                        </Image>
+                                        <StackLayout
+                                            Padding="5"
+                                            Grid.Column="1"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand">
+                                            <StackLayout
+                                                Orientation="Horizontal"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand">
+                                                <Label 
+                                                    FontSize="Small" 
+                                                    Text="{Binding cod, Mode=TwoWay}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                                </Label>
+                                                <Label 
+                                                    FontSize="Small" 
+                                                    Text="{Binding brand, Mode=TwoWay}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                                </Label>
+                                                <Label 
+                                                    FontSize="Small" 
+                                                    Text="{Binding codBet, Mode=TwoWay}"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="Start"
+                                                    VerticalTextAlignment="Start">
+                                                </Label>
+                                            </StackLayout>
+                                            <Label 
+                                                FontSize="Small" 
+                                                Text="{Binding isMetOnline, Mode=TwoWay}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                VerticalTextAlignment="Start">
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <ActivityIndicator 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="WhiteSmoke"
+                    Opacity="0.7"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    IsVisible="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

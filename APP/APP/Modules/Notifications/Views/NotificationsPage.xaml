@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APP.Views.NotificationsPage"
+        IconImageSource="ic_file"
+        BackgroundColor="WhiteSmoke"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}"
+        Title="Notificaciones">
+    <ContentPage.ToolbarItems Name="ToolBarItems">
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            BindingContext="{Binding Notifications}"
+            Padding="10"
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                <ListView 
+                        BackgroundColor="Transparent"
+                        HasUnevenRows="true" 
+                        IsPullToRefreshEnabled="true"
+                        IsRefreshing="{Binding IsRunning, Mode=TwoWay}"
+                        ItemsSource="{Binding ObjNotifications, Mode=TwoWay}"
+                        RefreshCommand="{Binding RefreshCommand, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    BackgroundColor="White"
+                                    CornerRadius="5"
+                                    Padding="0"
+                                    HasShadow="True"
+                                    Margin="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectNotificationsItemCommand}">
+                                        </TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <BoxView
+                                            Grid.Column="0"
+                                            BackgroundColor="{Binding ESTADO_COLOR, Mode=TwoWay}"/>
+                                        <Image 
+                                            Grid.Column="0"
+                                            WidthRequest="35"
+                                            HeightRequest="35"
+                                            HorizontalOptions="End" 
+                                            Source="ic_chevron_right">
+                                        </Image>
+                                        <StackLayout 
+                                            Padding="5"
+                                            Grid.Column="1"
+                                            VerticalOptions="FillAndExpand">
+                                            <Label 
+                                                FontAttributes="Bold"
+                                                FontSize="Small" 
+                                                Text="{Binding subject, Mode=TwoWay}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                VerticalTextAlignment="Start">
+                                            </Label>
+                                            <Label 
+                                                FontSize="Micro" 
+                                                Text="{Binding CONTENIDO_INTRO, Mode=TwoWay}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                VerticalTextAlignment="Start">
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <!--<ActivityIndicator 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="WhiteSmoke"
+                    Opacity="0.7"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    IsVisible="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="Center"
+                    --><!--HorizontalOptions="Center"/>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

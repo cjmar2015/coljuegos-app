@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="APP.Views.MasterDashboardPage"
+             IconImageSource="ic_dashboard"
+             BackgroundColor="White"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="INICIO">
+    <ContentPage.ToolbarItems Name="ToolBarItems">
+        <ToolbarItem IconImageSource="ic_notifications.png" Command="{Binding Dashboards.ShowNotificationsCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="White">
+            <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Source="dashboard.png" Aspect="AspectFill"
+                    VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand"/>
+            <Grid
+                BindingContext="{Binding Dashboards, Mode=TwoWay}"
+                Padding="0"
+                RowSpacing="0"
+                ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="50"
+                        VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand">
+                    <CollectionView  
+                            BackgroundColor="Transparent"
+                            ItemsSource="{Binding Modules, Mode=TwoWay}"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout 
+                                    Orientation="Vertical" 
+                                    Span="2"
+                                    HorizontalItemSpacing="20"
+                                    VerticalItemSpacing="0">
+                            </GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                        Padding="2"
+                                        BackgroundColor="Transparent"
+                                        HasShadow="True"
+                                        Margin="2">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateCommand}">
+                                        </TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid
+                                        Padding="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            WidthRequest="90"
+                                            HeightRequest="90"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            Aspect="AspectFit"
+                                            Source="{Binding Imagen, Mode=TwoWay}">
+                                        </Image>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <ActivityIndicator
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="CenterAndExpand"
+                        IsRunning="{Binding IsRunning, Mode=TwoWay}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

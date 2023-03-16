@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="APP.Views.MasterMenuPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Menu">
+    <ContentPage.Content>
+        <StackLayout
+                BackgroundColor="Transparent"
+                Padding="15,20,15,10">
+            <Image Source="Logo.png" WidthRequest="200" Margin="10,10,10,10" VerticalOptions="CenterAndExpand"/>
+            <StackLayout>
+                <ListView
+                    ItemsSource="{Binding MasterMenu, Mode=TwoWay}"
+                    SeparatorColor="#B5DFFF"
+                    Margin="5"
+                    HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateCommand}"></TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Source="{Binding Icon}"
+                                        WidthRequest="35"
+                                        HeightRequest="35"
+                                        Margin="5">
+                                    </Image>
+                                    <Label
+                                        FontSize="Medium"
+                                        Grid.Column="1"
+                                        VerticalOptions="Center"
+                                        TextColor="Black"
+                                        Text="{Binding Title}">
+                                    </Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout>
+                <Image Source="logo.png" WidthRequest="50" Margin="0" VerticalOptions="CenterAndExpand"/>
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="FillAndExpand">
+                    <Label 
+                        Text="Versión: "
+                        TextColor="Black"
+                        FontSize="Micro"
+                        VerticalOptions="Center"
+                        HorizontalOptions="EndAndExpand"/>
+                    <Label 
+                        Text="{Binding CurrentVersion, Mode=TwoWay}"
+                        TextColor="Black"
+                        FontSize="Micro"
+                        VerticalOptions="Center"
+                        HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="FillAndExpand">
+                    <Label Text="Un producto de"
+                            TextColor="Black"
+                            FontSize="Micro"
+                            VerticalOptions="Center"
+                            HorizontalOptions="EndAndExpand"/>
+                    <Label Text="{Binding Empresa, Mode=TwoWay}"
+                            TextColor="Black"
+                            FontSize="Micro"
+                            VerticalOptions="Center"
+                            HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APP.Views.MasterInformationPage" BackgroundColor="WhiteSmoke"
+             Title="Información">
+    <ContentPage.ToolbarItems Name="ToolBarItems">
+        <ToolbarItem Text="{Binding CurrentVersion, Mode=TwoWay}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid BindingContext="{Binding MasterInformation}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,10" VerticalOptions="FillAndExpand">
+                    <Image Source="Logo.png" Aspect="AspectFill" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="20,40,20,40" Spacing="10">
+                <Label FontSize="22" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="COLJUEGOS" FontAttributes="Bold" FontSize="22" />
+                                <Span Text=" " />
+                                <Span Text="{Binding CurrentVersion, Mode=TwoWay}" 
+                                      TextColor="{StaticResource LightTextColor}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Aplicación de consulta de COLJUEGOS." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

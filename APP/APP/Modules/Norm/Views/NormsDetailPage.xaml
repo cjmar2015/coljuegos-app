@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APP.Views.NormsDetailPage"
+        IconImageSource="ic_file"
+        BackgroundColor="WhiteSmoke"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}"
+        Title="Norma">
+    <ContentPage.ToolbarItems Name="ToolBarItems">
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            BindingContext="{Binding NormsDetail}"
+            Padding="10"
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout 
+                Padding="10"
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand">
+                <Label 
+                    FontSize="Small" 
+                    Text="{Binding Norm.obj.title, Mode=TwoWay}"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+                <Label 
+                    FontSize="Micro" 
+                    Text="{Binding Norm.obj.updatedAt}"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+                <Label 
+                    FontSize="Small" 
+                    Text="{Binding Norm.obj.description,Mode=TwoWay}"
+                    TextType="Html"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+            </StackLayout>
+            <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0">
+                <ListView 
+                        BackgroundColor="Transparent"
+                        HasUnevenRows="true" 
+                        IsPullToRefreshEnabled="true"
+                        IsRefreshing="{Binding IsRunning, Mode=TwoWay}"
+                        ItemsSource="{Binding NormLstFiles, Mode=TwoWay}"
+                        RefreshCommand="{Binding RefreshCommand, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    CornerRadius="5"
+                                    Padding="0"
+                                    HasShadow="True"
+                                    Margin="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectNormLstFileItemCommand}">
+                                        </TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Image 
+                                            Grid.Row="0"
+                                            Margin="0"
+                                            HeightRequest="200"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand" 
+                                            Aspect="AspectFill"
+                                            Source="{Binding url, Mode=TwoWay}">
+                                        </Image>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <ActivityIndicator 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="WhiteSmoke"
+                    Opacity="0.7"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    IsVisible="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
