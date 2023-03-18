@@ -8,7 +8,7 @@
         IconImageSource="ic_file"
         BackgroundColor="WhiteSmoke"
         BindingContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="Establishment">
+        Title="Establecimientos">
     <ContentPage.ToolbarItems Name="ToolBarItems">
 
     </ContentPage.ToolbarItems>

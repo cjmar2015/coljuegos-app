@@ -165,15 +165,15 @@ namespace APP.ViewModels
                 TextColor = "#000000",
                 BorderColor = "#3F51B5",
             });
-            //this.ListaModules.Add(new MasterModuleItemViewModel()
-            //{
-            //    PägeName = "Faq",
-            //    Title = "Faq",
-            //    Imagen = "ic_faq.png",
-            //    BackgroundColor = "WhiteSmoke",
-            //    TextColor = "#000000",
-            //    BorderColor = "#3F51B5",
-            //});
+            this.ListaModules.Add(new MasterModuleItemViewModel()
+            {
+                PägeName = "Faq",
+                Title = "Faq",
+                Imagen = "ic_faq.png",
+                BackgroundColor = "WhiteSmoke",
+                TextColor = "#000000",
+                BorderColor = "#3F51B5",
+            });
             this.ListaModules.Add(new MasterModuleItemViewModel()
             {
                 PägeName = "PQRS",
@@ -233,7 +233,7 @@ namespace APP.ViewModels
             if (establishmentUrl.obj != null)
             {
                 MainViewModel.GetInstance().MasterWeb = new MasterWebViewModel(establishmentUrl.obj.valueVar);
-                await App.Navigator.PushAsync(new MasterWebPage());
+                await App.Navigator.PushAsync(new EstablishmentsWebPage());
             }
 
             //MainViewModel.GetInstance().Establishments = new EstablishmentsViewModel();
@@ -247,7 +247,7 @@ namespace APP.ViewModels
             if (pQRSUrl.obj != null)
             {
                 MainViewModel.GetInstance().MasterWeb = new MasterWebViewModel(pQRSUrl.obj.valueVar);
-                await App.Navigator.PushAsync(new MasterWebPage());
+                await App.Navigator.PushAsync(new PqrsWebPage());
             }
 
             //MainViewModel.GetInstance().Establishments = new EstablishmentsViewModel();
@@ -256,7 +256,7 @@ namespace APP.ViewModels
         private async void ShowChannel()
         {
             MainViewModel.GetInstance().MasterWeb = new MasterWebViewModel("https://www.coljuegos.gov.co/publicaciones/306312/canales-de-atencion/");
-            await App.Navigator.PushAsync(new MasterWebPage());
+            await App.Navigator.PushAsync(new ChannelWebPage());
         }
         private async void ShowRequirements()
         {

@@ -23,9 +23,7 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Modules\Channel\Models\" />
-    <Folder Include="Modules\Channel\Views\" />
     <Folder Include="Modules\Channel\ViewModels\" />
-    <Folder Include="Modules\Pqrs\Views\" />
     <Folder Include="Modules\Pqrs\ViewModels\" />
     <Folder Include="Modules\Region\Views\" />
     <Folder Include="Modules\Region\ViewModels\" />
@@ -33,11 +31,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Modules\Channel\Views\ChannelWebPage.xaml.cs">
+      <DependentUpon>ChannelWebPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Modules\Establecimientos\Views\EstablishmentsPage.xaml.cs">
       <DependentUpon>EstablishmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Modules\Establecimientos\Views\EstablishmentsDetailPage.xaml.cs">
       <DependentUpon>EstablishmentsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Establecimientos\Views\EstablishmentsWebPage.xaml.cs">
+      <DependentUpon>EstablishmentsWebPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Modules\Event\Views\EventsDetailPage.xaml.cs">
       <DependentUpon>EventsDetailPage.xaml</DependentUpon>
@@ -66,11 +70,17 @@
     <Compile Update="Modules\Notifications\Views\NotificationsPage.xaml.cs">
       <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Modules\Persona\Views\ChangePasswordAccountPage.xaml.cs">
+      <DependentUpon>ChangePasswordAccountPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Modules\Persona\Views\RememberAccountPage.xaml.cs">
       <DependentUpon>RememberAccountPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Modules\Persona\Views\NewAccountPage.xaml.cs">
       <DependentUpon>NewAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Pqrs\Views\PqrsWebPage.xaml.cs">
+      <DependentUpon>PqrsWebPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Modules\Requirement\Views\RequirementsDetailPage.xaml.cs">
       <DependentUpon>RequirementsDetailPage.xaml</DependentUpon>
@@ -81,10 +91,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Modules\Channel\Views\ChannelWebPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\Establecimientos\Views\EstablishmentsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Establecimientos\Views\EstablishmentsDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Establecimientos\Views\EstablishmentsWebPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Event\Views\EventsDetailPage.xaml">
@@ -135,10 +151,16 @@
     <EmbeddedResource Update="Modules\Notifications\Views\NotificationsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Persona\Views\ChangePasswordAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\Persona\Views\RememberAccountPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Persona\Views\NewAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Pqrs\Views\PqrsWebPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Requirement\Views\RequirementsDetailPage.xaml">

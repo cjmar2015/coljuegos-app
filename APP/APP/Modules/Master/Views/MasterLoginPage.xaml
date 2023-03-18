@@ -74,7 +74,7 @@
                                     HorizontalOptions="End"/>
                         </StackLayout>
                         <Button 
-                            Text="INCIAR SESIÓN"
+                            Text="INICIAR SESIÓN"
                             FontAttributes="Bold"
                             Margin="0"
                             Padding="15"

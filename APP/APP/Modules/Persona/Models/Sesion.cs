@@ -51,5 +51,8 @@ namespace APP.Models
 
         [JsonProperty(PropertyName = "loginOk")]
         public bool loginOk { get; set; }
+
+        [JsonProperty(PropertyName = "tmpPassword")]
+        public bool tmpPassword { get; set; }
     }
 }

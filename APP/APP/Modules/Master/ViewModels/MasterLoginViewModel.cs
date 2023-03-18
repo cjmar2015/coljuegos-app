@@ -150,7 +150,7 @@
             };
             Sesion _sesion = await MainViewModel.GetInstance().PostLogin(login);
 
-            if (_sesion == null)
+            if (_sesion.processIsSuccessful == false && _sesion.tmpPassword == false)
             {
                 await Application.Current.MainPage.DisplayAlert(
                 "Error de acceso",
@@ -160,9 +160,22 @@
                 this.IsEnabled = true;
                 return;
             }
+            //es una contraseña temporal
+            if (_sesion.processIsSuccessful == false && _sesion.tmpPassword == true)
+            {
+                MainViewModel.GetInstance().ChangePasswordAccount = new ChangePasswordViewModel(Email, Password);
+                await App.Navigator.PushAsync(new ChangePasswordAccountPage());
+                Settings.Password = string.Empty;
+                Settings.IsLogin = false;
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                return;
+            }
 
             //pesistencia
             MainViewModel.GetInstance().Sesion = _sesion;
+
+            
 
             if (IsRemembered)
             {

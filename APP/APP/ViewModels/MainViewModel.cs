@@ -30,7 +30,7 @@
         #endregion
 
         #region Atributes
-        private readonly string uRLAPI = "https://coljuegos.co:8080";
+        private readonly string uRLAPI = "https://coljuegos.co:443";
         private Image imageUsuario;
         private string empresa = "COLJUEGOS";
         private string currentVersion;
@@ -291,10 +291,6 @@
                     MainViewModel.GetInstance().URLAPI +
                     "/service/s0001-security/login/login", login);
             }
-            if (!response.checkResponse)
-            {
-                return null;
-            }
             if (response.body == null)
             {
                 return null;
@@ -308,6 +304,11 @@
         #region Cuentas
         #region Properties
         public NewAccountViewModel NewAccount
+        {
+            get;
+            set;
+        }
+        public ChangePasswordViewModel ChangePasswordAccount
         {
             get;
             set;
@@ -331,6 +332,18 @@
                     "/service/s0001-security/manage-user/create-user", user);
             }
             return (Estandar<User>)response.body;
+        }
+        public async Task<Estandar<UserChange>> PostChangePassword(UserChange userChange)
+        {
+            Response<bool> connection = await this.ApiService.CheckConnection<bool>();
+            Response<Estandar<UserChange>> response = new Response<Estandar<UserChange>>();
+            if (connection.checkResponse)
+            {
+                response = await this.ApiService.Post<Estandar<UserChange>, UserChange>(
+                    MainViewModel.GetInstance().URLAPI +
+                    "/service/s0001-security/manage-user/change-password-tmp", userChange);
+            }
+            return (Estandar<UserChange>)response.body;
         }
         #endregion
         #region Functions

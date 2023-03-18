@@ -9,36 +9,24 @@
     using System.Linq;
     using System.Text.RegularExpressions;
 
-    public class NewAccountViewModel : BaseViewModel
+    public class ChangePasswordViewModel : BaseViewModel
     {
         #region Attributes
-        private string name;
-        private string lastName;
-        private string phone;
         private string email;
+        private string oldpassword;
         private string password;
         #endregion
 
         #region Properties
-        public string Name
-        {
-            get { return this.name; }
-            set { SetValue(ref this.name, value); }
-        }
-        public string LastName
-        {
-            get { return this.lastName; }
-            set { SetValue(ref this.lastName, value); }
-        }
-        public string Phone
-        {
-            get { return this.phone; }
-            set { SetValue(ref this.phone, value); }
-        }
         public string Email
         {
             get { return this.email; }
             set { SetValue(ref this.email, value); }
+        }
+        public string Oldpassword
+        {
+            get { return this.oldpassword; }
+            set { SetValue(ref this.oldpassword, value); }
         }
         public string Password
         {
@@ -48,18 +36,19 @@
         #endregion
 
         #region Constructors
-        public NewAccountViewModel()
+        public ChangePasswordViewModel(string email, string oldpassword)
         {
-
+            this.Email = email;
+            this.Oldpassword = oldpassword;
         }
         #endregion
 
         #region Commands
-        public ICommand NewAccountCommand
+        public ICommand NewChangePasswordCommand
         {
             get
             {
-                return new Command(() => NewAccount());
+                return new Command(() => NewChangePassword());
             }
         }
 
@@ -70,57 +59,6 @@
         {
             try
             {
-                if (string.IsNullOrEmpty(Name))
-                {
-                    await Application.Current.MainPage.DisplayAlert(
-                            "Error",
-                            "Ingrese su nombre",
-                            "Aceptar");
-                    this.IsRunning = false;
-                    return false;
-                }
-                if (string.IsNullOrEmpty(LastName))
-                {
-                    await Application.Current.MainPage.DisplayAlert(
-                            "Error",
-                            "Ingrese sus apellidos",
-                            "Aceptar");
-                    this.IsRunning = false;
-                    return false;
-                }
-                if (string.IsNullOrEmpty(Phone) || Phone.Count() < 10)
-                {
-                    await Application.Current.MainPage.DisplayAlert(
-                            "Error",
-                            "Ingrese un número de teléfono válido",
-                            "Aceptar");
-                    this.IsRunning = false;
-                    return false;
-                }
-
-                if (string.IsNullOrEmpty(Email))
-                {
-                    await Application.Current.MainPage.DisplayAlert(
-                            "Error",
-                            "Ingrese un email válido",
-                            "Aceptar");
-                    this.IsRunning = false;
-                    return false;
-                }
-                else
-                {
-                    String sFormato;
-                    sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-                    if (!Regex.IsMatch(Email, sFormato))
-                    {
-                        await Application.Current.MainPage.DisplayAlert(
-                            "Error",
-                            "Ingrese un email válido",
-                            "Aceptar");
-                        this.IsRunning = false;
-                        return false;
-                    }
-                }
                 if (string.IsNullOrEmpty(Password))
                 {
                     await Application.Current.MainPage.DisplayAlert(
@@ -187,35 +125,31 @@
             }
             return true;
         }
-        private async void NewAccount()
+        private async void NewChangePassword()
         {
             this.IsRunning = true;
             if (await Validate())
             {
-                User user = new User();
-                user.email = Email;
-                user.newPassword= Password;
-                user.person = new Person()
-                {
-                    name = Name,
-                    lastName = Name,
-                    phoneNumber = Phone
-                };
-                Estandar<User> estandar = await MainViewModel.GetInstance().PostNewAccount(user);
+                UserChange userChange = new UserChange();
+                userChange.username = Email;
+                userChange.tmpPassword = Oldpassword;
+                userChange.newPassword= Password;
+
+                Estandar<UserChange> estandar = await MainViewModel.GetInstance().PostChangePassword(userChange);
                 if (estandar != null)
                 {
                     if (!estandar.processIsSuccessful)
                     {
                         await Application.Current.MainPage.DisplayAlert(
                                 "Error",
-                                "No se ha podido crear la cuenta: " + estandar.msg,
+                                "No se ha podido cambiar la contraseña: " + estandar.msg,
                                 "Aceptar");
                         this.IsRunning = false;
                         return;
                     }
                     await Application.Current.MainPage.DisplayAlert(
                                 "Información",
-                                "Creado con éxito, hemos enviado un correo electrónico a la dirección " + Email + " para verificarlo. Debe verificar su correo electrónico para ingresar al sistema.",
+                                "Se ha cambiado la contraseña satisfactoriamente!",
                                 "Aceptar");
                         this.IsRunning = false;
                     
