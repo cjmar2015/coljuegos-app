@@ -301,7 +301,7 @@
 
         #endregion
 
-        #region Cuentas
+        #region Module - Cuentas
         #region Properties
         public NewAccountViewModel NewAccount
         {
@@ -452,7 +452,7 @@
         #endregion
         #endregion
 
-        #region Faq
+        #region Module - Faq
 
         #region Properties
         public FaqsViewModel Faqs
@@ -539,12 +539,12 @@
             }
             return (Estandar<Faq>)response.body;
         }
-        
-        #endregion
 
         #endregion
 
-        #region Norm
+        #endregion
+
+        #region Module - Norm
 
         #region Properties
         public NormsViewModel Norms
@@ -635,7 +635,7 @@
 
         #endregion
 
-        #region Region
+        #region Module - Region
 
         #region Functions
         public async Task<Estandar<Departamento>> GetDepartamentos()
@@ -683,7 +683,7 @@
 
         #endregion
 
-        #region Establishment
+        #region Module - Establishment
         #region Properties
         public EstablishmentsViewModel Establishments
         {
@@ -742,7 +742,7 @@
         #endregion
         #endregion
 
-        #region Requirement
+        #region Module - Requirement
         #region Atributes
         #endregion
 
@@ -839,7 +839,7 @@
         #endregion
         #endregion
 
-        #region Notification
+        #region Module - Notification
         #region Atributes
         #endregion
 
@@ -962,7 +962,7 @@
         #endregion
         #endregion
 
-        #region PQRS
+        #region Module - PQRS
         #region Functions
         public async Task<Estandar<PQRSUrl>> GetParamUrlPQRS()
         {
@@ -988,6 +988,31 @@
         #endregion
         #endregion
 
+        #region Module - Portal
+        #region Functions
+        public async Task<Estandar<PortalUrl>> GetParamUrlPortal()
+        {
+            Response<bool> connection = await this.ApiService.CheckConnection<bool>();
+            Response<Estandar<PortalUrl>> response = new Response<Estandar<PortalUrl>>();
+            if (connection.checkResponse)
+            {
+                PortalUrl portalUrl = new PortalUrl();
+                response = await this.ApiService.Post<Estandar<PortalUrl>, PortalUrl>(
+                    MainViewModel.GetInstance().URLAPI +
+                    "/service/s0004-config-manager/config-param/get-param-url-portaloper", portalUrl);
+            }
+            if (!response.checkResponse)
+            {
+                return null;
+            }
+            if (response.body == null)
+            {
+                return null;
+            }
+            return (Estandar<PortalUrl>)response.body;
+        }
+        #endregion
+        #endregion
         #endregion
 
         #region Singleton

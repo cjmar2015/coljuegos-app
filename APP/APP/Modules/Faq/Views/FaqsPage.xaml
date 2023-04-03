@@ -8,7 +8,7 @@
         IconImageSource="ic_file"
         BackgroundColor="WhiteSmoke"
         BindingContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="Faq">
+        Title="PTF">
     <ContentPage.ToolbarItems Name="ToolBarItems">
 
     </ContentPage.ToolbarItems>

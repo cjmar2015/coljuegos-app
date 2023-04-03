@@ -24,6 +24,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Modules\Channel\Models\" />
     <Folder Include="Modules\Channel\ViewModels\" />
+    <Folder Include="Modules\Portal\ViewModels\" />
     <Folder Include="Modules\Pqrs\ViewModels\" />
     <Folder Include="Modules\Region\Views\" />
     <Folder Include="Modules\Region\ViewModels\" />
@@ -78,6 +79,10 @@
     </Compile>
     <Compile Update="Modules\Persona\Views\NewAccountPage.xaml.cs">
       <DependentUpon>NewAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Portal\Views\PortalWebPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>PortalWebPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Modules\Pqrs\Views\PqrsWebPage.xaml.cs">
       <DependentUpon>PqrsWebPage.xaml</DependentUpon>
@@ -158,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Persona\Views\NewAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Portal\Views\PortalWebPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Pqrs\Views\PqrsWebPage.xaml">

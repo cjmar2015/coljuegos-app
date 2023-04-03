@@ -74,6 +74,10 @@
             {
                 MainViewModel.GetInstance().Dashboards.ShowPqrsCommand.Execute(this);
             }
+            if (this.PägeName == "Portal")
+            {
+                MainViewModel.GetInstance().Dashboards.ShowPortalCommand.Execute(this);
+            }
             if (this.PägeName == "Channel")
             {
                 MainViewModel.GetInstance().Dashboards.ShowChannelCommand.Execute(this);

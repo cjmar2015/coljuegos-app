@@ -79,6 +79,13 @@ namespace APP.ViewModels
                 return new Command(() => ShowPQRS());
             }
         }
+        public ICommand ShowPortalCommand
+        {
+            get
+            {
+                return new Command(() => ShowPortal());
+            }
+        }
         public ICommand ShowRequirementsCommand
         {
             get
@@ -183,6 +190,15 @@ namespace APP.ViewModels
                 TextColor = "#000000",
                 BorderColor = "#3F51B5",
             });
+            this.ListaModules.Add(new MasterModuleItemViewModel()
+            {
+                PägeName = "Portal",
+                Title = "Portal",
+                Imagen = "ic_portal.png",
+                BackgroundColor = "WhiteSmoke",
+                TextColor = "#000000",
+                BorderColor = "#3F51B5",
+            });
         }
         private IEnumerable<MasterModuleItemViewModel> ToModuleItemViewModel()
         {
@@ -275,6 +291,20 @@ namespace APP.ViewModels
                 MainViewModel.GetInstance().Notifications = new NotificationsViewModel();
                 await App.Navigator.PushAsync(new NotificationsPage());
             }
+        }
+        private async void ShowPortal()
+        {
+            this.IsRunning = true;
+            Estandar<PortalUrl> portalUrl = await MainViewModel.GetInstance().GetParamUrlPortal();
+            this.IsRunning = false;
+            if (portalUrl.obj != null)
+            {
+                MainViewModel.GetInstance().MasterWeb = new MasterWebViewModel(portalUrl.obj.valueVar);
+                await App.Navigator.PushAsync(new PortalWebPage());
+            }
+
+            //MainViewModel.GetInstance().Establishments = new EstablishmentsViewModel();
+            //await App.Navigator.PushAsync(new EstablishmentsPage());
         }
         #endregion
     }
