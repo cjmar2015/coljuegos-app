@@ -8,7 +8,7 @@
         IconImageSource="ic_file"
         BackgroundColor="WhiteSmoke"
         BindingContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="PTF">
+        Title="Preguntas frecuentes">
     <ContentPage.ToolbarItems Name="ToolBarItems">
 
     </ContentPage.ToolbarItems>
@@ -42,7 +42,6 @@
                     <Grid.RowDefinitions >
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
                     <BoxView
                         Grid.Row="0"
                         Grid.Column="0"
