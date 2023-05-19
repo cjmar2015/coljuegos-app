@@ -684,6 +684,7 @@
         #endregion
 
         #region Module - Establishment
+
         #region Properties
         public EstablishmentsViewModel Establishments
         {
@@ -740,6 +741,7 @@
             return (Estandar<EstablishmentUrl>)response.body;
         }
         #endregion
+
         #endregion
 
         #region Module - Requirement
@@ -1013,6 +1015,7 @@
         }
         #endregion
         #endregion
+
         #endregion
 
         #region Singleton

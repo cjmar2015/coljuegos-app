@@ -12,7 +12,7 @@
         <StackLayout
                 BackgroundColor="Transparent"
                 Padding="15,20,15,10">
-            <Image Source="Logo.png" WidthRequest="200" Margin="10,10,10,10" VerticalOptions="CenterAndExpand"/>
+            <Image Source="logo.png" WidthRequest="200" Margin="10,10,10,10" VerticalOptions="CenterAndExpand"/>
             <StackLayout>
                 <ListView
                     ItemsSource="{Binding MasterMenu, Mode=TwoWay}"
