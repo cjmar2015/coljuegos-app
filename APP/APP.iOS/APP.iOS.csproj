@@ -113,6 +113,55 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\background.imageset\background.jpg" />
+    <ImageAsset Include="Assets.xcassets\background.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\dashboard.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\dashboard.imageset\dashboard.jpg" />
+    <ImageAsset Include="Assets.xcassets\ic_canales.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_canales.imageset\ic_canales.png" />
+    <ImageAsset Include="Assets.xcassets\ic_establecimiento.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_establecimiento.imageset\ic_establecimiento.png" />
+    <ImageAsset Include="Assets.xcassets\ic_eventos.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_eventos.imageset\ic_eventos.png" />
+    <ImageAsset Include="Assets.xcassets\ic_faq.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_faq.imageset\ic_faq.png" />
+    <ImageAsset Include="Assets.xcassets\ic_info.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_info.imageset\ic_info.png" />
+    <ImageAsset Include="Assets.xcassets\ic_lock_open.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_lock_open.imageset\ic_lock_open.png" />
+    <ImageAsset Include="Assets.xcassets\ic_login.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_login.imageset\ic_login.png" />
+    <ImageAsset Include="Assets.xcassets\ic_normas.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_normas.imageset\ic_normas.png" />
+    <ImageAsset Include="Assets.xcassets\ic_notifications.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_notifications.imageset\ic_notifications.png" />
+    <ImageAsset Include="Assets.xcassets\ic_notifications_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_notifications_white.imageset\ic_notifications_white.png" />
+    <ImageAsset Include="Assets.xcassets\ic_portal.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_portal.imageset\ic_portal.png" />
+    <ImageAsset Include="Assets.xcassets\ic_pqrs.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_pqrs.imageset\ic_pqrs.png" />
+    <ImageAsset Include="Assets.xcassets\ic_preguntas.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_preguntas.imageset\ic_preguntas.png" />
+    <ImageAsset Include="Assets.xcassets\ic_requerimientos.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_requerimientos.imageset\ic_requerimientos.png" />
+    <ImageAsset Include="Assets.xcassets\ic_search.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_search.imageset\ic_search.png" />
+    <ImageAsset Include="Assets.xcassets\ic_user.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_user.imageset\ic_user.png" />
+    <ImageAsset Include="Assets.xcassets\ic_user_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_user_white.imageset\ic_user_white.png" />
+    <ImageAsset Include="Assets.xcassets\icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon.png" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\logo.png" />
+    <ImageAsset Include="Assets.xcassets\noimage.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\noimage.imageset\noimage.png" />
+    <ImageAsset Include="Assets.xcassets\pre_login.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pre_login.imageset\pre_login.jpg" />
+    <ImageAsset Include="Assets.xcassets\splash_logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\splash_logo.imageset\splash_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,7 +184,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\APP\APP.csproj">
-      <Project>{A0FD1F0D-6717-4186-9D85-72742532FDD9}</Project>
+      <Project>{B1F33CA3-EFC8-4E16-94E4-873F92EC60E4}</Project>
       <Name>APP</Name>
     </ProjectReference>
   </ItemGroup>
