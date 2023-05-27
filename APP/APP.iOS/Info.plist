@@ -23,13 +23,13 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>APP</string>
+	<string>Coljuegos</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.APP</string>
+	<string>co.gov.coljuegos.app</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleName</key>
-	<string>APP</string>
+	<string>Coljuegos</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UILaunchStoryboardName</key>
